@@ -1,0 +1,16 @@
+def longestSubstring(str):
+    ret, left, right = 0, 0, 0
+    dict = {}
+
+    while right < len(str):
+        curr = str[right]
+        if curr in dict and dict[curr] > left:
+            left = dict[curr] + 1
+        dict[curr] = right
+        
+        ret = max(ret, right - left + 1)
+        right += 1
+
+    return ret
+
+print(longestSubstring("abba"))
